@@ -1,0 +1,42 @@
+﻿@page
+@model Bloggie.Web.Pages.Admin.Blogs.ListModel
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2 mb-5">
+    <div class="container">
+        <h1>Blog Post List</h1>
+    </div>
+</div>
+@if(Model.BlogPosts != null && Model.BlogPosts.Any())
+{
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Heading</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var blogBost in Model.BlogPosts)
+                {
+                    <tr>
+                        <td>@blogBost.Id</td>
+                        <td>@blogBost.Heading</td>
+                        <td>
+                            <a href="/Admin/Blogs/Edit/@blogBost.Id">View</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="container">
+        <p>No blog posts were found!</p>
+    </div>
+}
